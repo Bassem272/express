@@ -198,7 +198,7 @@ export default {
     }
     const id = parseInt(req.params.id);
     const { name } = req.body;
-
+   
     const updatedProduct = await productsModel.updateCategory(id, {
       name,
     });
@@ -208,20 +208,22 @@ export default {
     } else {
       res.json(updatedProduct);
     }
-  },
-  async deleteCategory(req, res) {
-    try {
-      // productsModel.validCategory(req.body);
-      const idw = req.params.id;
-      console.log(idw, "control");
-      const deletedProduct = await productsModel.deleteCategory(idw);
-      //productsModel.addProduct(newProduct);
-      console.log("deleted category:", deletedProduct);
 
-      res.status(201).json(deletedProduct);
+  },
+ async deleteCategory(req, res) {
+    try {
+     // productsModel.validCategory(req.body);
+     const idw  = req.params.id;
+    console.log(idw,'control');
+    const deletedProduct = await productsModel.deleteCategory(idw);
+    //productsModel.addProduct(newProduct);
+    console.log("deleted category:", deletedProduct);
+
+    res.status(201).json(deletedProduct);
     } catch (error) {
       return res.status(400).send({ error: error.message });
     }
+    
   },
   async updateProduct(req, res) {
     try {
